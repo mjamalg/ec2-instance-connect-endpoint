@@ -1,7 +1,7 @@
 ---
 - name: Jenkins Master Docker Config
   hosts: jenkins-master
-  user: cloud_user
+  user: ec2_user
   become: true
   gather_facts: false
 
