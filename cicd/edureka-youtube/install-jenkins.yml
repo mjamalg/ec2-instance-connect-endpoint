@@ -1,7 +1,7 @@
 ---
 - name: Configure Jenkins Master - Docker Install
   user: ec2_user
-  become: true
+  hosts: all
   gather_facts: false
 
   tasks:
