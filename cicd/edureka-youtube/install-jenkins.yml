@@ -7,26 +7,43 @@
     - name: Load variables for install-docker playbook
       ansible.builtin.include_vars:
         file: jenkins-vars.yml
+      tags:
+        - load-variables
 
     - name: Disable Selinux
       ansible.posix.selinux:
         state: disabled
+      tags:
+        - disable_selinux
 
-    - name: Install java maven and git
+    - name: Dnf upgrade (yum upgrade)
       ansible.builtin.dnf:
-        name: '{{ packages }}'
+        name: "*"
         state: latest
+      tags:
+        - dnf_upgrade
 
     - name: Add jenkins to repo
       ansible.builtin.get_url:
         url: http://pkg.jenkins-ci.org/redhat-stable/jenkins.repo
         dest: /etc/yum.repos.d/
         mode: 644
+      tags:
+        - add-jenkins-repo
 
     - name: Import jenkins repo key
       ansible.builtin.rpm_key:
         state: present
-        key: https://jenkins-ci.org/redhat/jenkins-ci.org.key
+        key: https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key
+      tags:
+        - import-jenkins-key
+
+    - name: Install java
+      ansible.builtin.dnf:
+        name: '{{ packages }}'
+        state: latest
+      tags:
+        - install-java
 
     - name: Install jenkins
       ansible.builtin.dnf:
@@ -35,7 +52,7 @@
       notify:
         - Start jenkins
       tags:
-        - install_jenkins
+        - install-jenkins
 
     - name: Add jenkins to sudoers
       ansible.builtin.lineinfile:
@@ -45,14 +62,16 @@
         mode: '440'
         create: true
         validate: 'visudo -cf %s'
+      tags:
+        - add-jenkins-sudoers
 
     - name: Add jenkins to docker group
       ansible.builtin.user:
         name: jenkins
         comment: jenkins server
-        groups: dockerroot
+        groups: docker
       tags:
-        - add-jenkins-to-docker
+        - add-jenkins-to-docker-grp
 
   handlers:
     - name: Start jenkins
