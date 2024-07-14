@@ -1,0 +1,65 @@
+---
+- name: Configure Jenkins Master - Docker Install
+  hosts: jenkins-master
+  user: ec2_user
+  become: true
+  gather_facts: false
+
+  tasks:
+    - name: Load variables for install-docker playbook
+      ansible.builtin.include_vars:
+        file: host_vars/docker-vars.yml
+
+    - name: Disable Selinux
+      ansible.posix.selinux:
+        state: disabled
+
+    - name: Install java maven and git
+      ansible.builtin.dnf:
+        name: '{{ packages }}'
+        state: latest
+
+    - name: Add jenkins to repo
+      ansible.builtin.get_url:
+        url: http://pkg.jenkins-ci.org/redhat-stable/jenkins.repo
+        dest: /etc/yum.repos.d/
+        mode: 644
+
+    - name: Import jenkins repo key
+      ansible.builtin.rpm_key:
+        state: present
+        key: https://jenkins-ci.org/redhat/jenkins-ci.org.key
+
+    - name: Install jenkins
+      ansible.builtin.dnf:
+        name: jenkins
+        state: latest
+      notify:
+        - Start jenkins
+      tags:
+        - install_jenkins
+
+    - name: Add jenkins to sudoers
+      ansible.builtin.lineinfile:
+        path: /etc/sudoers.d/jenkins
+        line: 'jenkins ALL=(ALL) NOPASSWD: ALL'
+        state: present
+        mode: '440'
+        create: true
+        validate: 'visudo -cf %s'
+
+    - name: Add jenkins to docker group
+      ansible.builtin.user:
+        name: jenkins
+        comment: jenkins server
+        groups: dockerroot
+      tags:
+        - add-jenkins-to-docker
+
+  handlers:
+    - name: Start jenkins
+      ansible.builtin.systemd_service:
+        name: jenkins
+        state: restarted
+        enabled: true
+...
