@@ -7,7 +7,7 @@
   tasks:
     - name: Load variables for install-docker playbook
       ansible.builtin.include_vars:
-        file: host_vars/docker-vars.yml
+        file: jenkins-vars.yml
 
     - name: Disable Selinux
       ansible.posix.selinux:
