@@ -1,1 +1,1 @@
-# ansible
+This is a project I created to get more familiar with Red Hat Automation Platform. The idea was to use both playbooks with RHAP amd create a workflow to install Docker and Jenkins on an EC2 instance. 
