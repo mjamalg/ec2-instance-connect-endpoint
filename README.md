@@ -1,1 +1,1 @@
-This is a project I created to get more familiar with Red Hat Automation Platform. The idea was to use both playbooks with RHAP amd create a workflow to install Docker and Jenkins on an EC2 instance. 
+I initially used this as a project source for my Red Hat Automation Platform Job templates. 
