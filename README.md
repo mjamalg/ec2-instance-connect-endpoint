@@ -1,4 +1,4 @@
-# Using EC2 Connect Interface Endpoint
+# Using EC2 Instance Connect Endpoint
 
 I generally use this repo as a project source for my private Red Hat Ansible Automation Platform server. I've recently added some Terraform code that sets up an EC2 Connect Interface Endpoint in a VPC that allows me to ssh remotely to an EC2 instance without the use of a bastion host. 
 
