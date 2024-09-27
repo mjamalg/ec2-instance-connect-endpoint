@@ -1,7 +1,6 @@
 ---
 - name: Configure Jenkins Master - Docker Install
   hosts: all
-  gather_facts: true
 
   tasks:
     - name: Load variables for install-docker playbook
