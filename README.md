@@ -1,7 +1,7 @@
 # Using EC2 Instance Connect Endpoint
 
 ### About
-The terraform configs in this repo provision a VPC with my "production ready layout":	
+The terraform configs in this repo, most of which were created with the community supported modules, provision a VPC with my "production ready layout":	
 - us-east-1 region
 - 10.72.0.0/16 custom VPC CIDR
 - 2 Availability Zones (us-east-1a, us-east-1b)
@@ -12,13 +12,13 @@ The terraform configs in this repo provision a VPC with my "production ready lay
 - 1 Internet Gateway
 - 1 public route table
 - 1 private route table (for the Nat Gateway)
-
+- 
 ![eic-project-vpc-readme](https://github.com/user-attachments/assets/6bdfb6ee-e66a-4bf7-959f-c476ee42a797)
 
-In addition it also creates 2 instances in the "app" private subnets (one in each AZ) and an EC2 Instance Connect Endpoint (EICE) to allow ssh-ing to them securely without the need for a bastion host or having to place instances in the public subnet.
-
-My terraform config also create 2 security groups with the AWS recommended ingress and egress ssh rules for the EICE and the E2C instances:
+They also create an EC2 Instance Connect Endpodint, 2 instances in the "app" private subnet of each AZ, as well as 2 security groups with the AWS recommended ingress and egress ssh rules for both the EICE and the EC2 instances.
 ![eic-project-sgr-list-readme](https://github.com/user-attachments/assets/9b4c69e8-b0ea-4bdc-9ca3-9f3e0d050255)
+
+What's great about the EC2 Instance Connect Endpoint (EICE) is that it allows secure remote acess to instances in a private subnet without the need for a bastion host or having to place instances in the public subnet!
 
 In order to utilize the EICE, I make use of the _aws ec2-instance-connect_ aws cli option with the ssh ProxyCommand like this:
 ```
