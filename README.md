@@ -25,7 +25,10 @@ ECIE Ingress:
 ![eic-project-eic-sgr-ingress-readme](https://github.com/user-attachments/assets/abcefda7-07e0-4dd4-bb6c-8904c8453e2d)
 ECIE Egress:
 ![eic-project-eic-sgr-egress-readme](https://github.com/user-attachments/assets/e85b564f-dbb4-4c8d-bef8-8aa26ecb107a)
-
+EC2 Ingress:
+![eic-project-sgr-ec2-ingress-readme](https://github.com/user-attachments/assets/fcb377fc-b12e-481b-bdb4-f2aa72912781)
+EC2 Egress:
+![eic-project-sgr-ec2-egress-readme](https://github.com/user-attachments/assets/a30b72bf-0142-4aeb-a6d1-7182d11ef81c)
 
 In order to utilize the EICE, I make use of the _aws ec2-instance-connect_ aws cli option with the ssh ProxyCommand like this:
 ```
