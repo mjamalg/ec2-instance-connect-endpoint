@@ -21,10 +21,10 @@ In addition it also creates 2 instances in the "app" private subnets (one in eac
 My terraform config also create 2 security groups with the AWS recommended ingress and egress ssh rules for the EICE and the E2C instances:
 ![eic-project-sgr-list-readme](https://github.com/user-attachments/assets/9b4c69e8-b0ea-4bdc-9ca3-9f3e0d050255)
 
-**ECIE:**
+ECIE Ingress:
 ![eic-project-eic-sgr-ingress-readme](https://github.com/user-attachments/assets/abcefda7-07e0-4dd4-bb6c-8904c8453e2d)
+ECIE Egress:
 ![eic-project-eic-sgr-egress-readme](https://github.com/user-attachments/assets/e85b564f-dbb4-4c8d-bef8-8aa26ecb107a)
-
 
 
 In order to utilize the EICE, I make use of the _aws ec2-instance-connect_ aws cli option with the ssh ProxyCommand like this:
