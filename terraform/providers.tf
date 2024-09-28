@@ -9,6 +9,8 @@ terraform {
 
 provider "aws" {
   region = "us-east-1"
-  profile = "terraformuser"
+  profile = " YOUR AWS PROFILE GOES HERE IF YOU USE ENV VARIABLES LIKE ME "
+
+  #Add your AWS credential information here if you don't use a profile
 
 }

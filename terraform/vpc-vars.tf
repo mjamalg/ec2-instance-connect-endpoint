@@ -24,7 +24,6 @@ variable "vpc_private_app_sn_tag" {
 
 variable "vpc_private_data_rtb_tag" {
     type = string
-    description = "Custom tag for VPC private data/databse subnets"
 }
 
 variable "vpc_private_data_sn_tag" {
@@ -33,15 +32,12 @@ variable "vpc_private_data_sn_tag" {
 }
 variable "vpc_nat_gateway_tag" {
     type = string
-    description = "Custom tag for VPC Nat GWs"
 }
 
 variable "vpc_igw_tag" {
     type = string
-    description = "Custom tag for VPC IGW"
 }
 
 variable "vpc_database_subnet_group_name" {
     type = string
-    description = "Custom tag for VPC subnets being used for the database cluster"
 }
