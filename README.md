@@ -26,6 +26,7 @@ In order to utilize the EICE, I make use of the _aws ec2-instance-connect_ aws c
 ssh ec2-user@i-0123456789example -i mypem.pem -o ProxyCommand='aws ec2-instance-connect open-tunnel --instance-id %h'
 ```
 Replace the i-0123456789example with an instance id, and replace mypem.pem with YOUR EC2 ssh key file. When you run the command you will make an ssh connection!:
+![eic-project-ssh-readm](https://github.com/user-attachments/assets/aa63b643-a938-4d66-85dd-407762355b69)
 
 ### Cost
 - NAT Gateway - $0.45 an hour and THERE IS NO FREE TIER (crazy)
