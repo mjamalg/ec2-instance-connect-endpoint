@@ -1,9 +1,7 @@
 # Using EC2 Instance Connect Endpoint
 
 ### About
-This repo is generally used as a project source for my private Red Hat Ansible Automation Platform server (RHAAP). There are 2 playbooks that I use to show the RHAAP in action, one to install docker and one to install jenkins. They're located in the "ansible" directory. Feel free to use them with your own RHAAP or just with community ansible. Enjoy!
-
-I recently added some Terraform code that sets up a VPC with my "production ready layout":	
+The terraform configs in this repo provision a VPC with my "production ready layout":	
 - us-east-1 region
 - 10.72.0.0/16 custom VPC CIDR
 - 2 Availability Zones (us-east-1a, us-east-1b)
@@ -17,7 +15,7 @@ I recently added some Terraform code that sets up a VPC with my "production read
 
 ![eic-project-vpc-readme](https://github.com/user-attachments/assets/6bdfb6ee-e66a-4bf7-959f-c476ee42a797)
 
-In addition it also creates 2 instances in the "app" private subnets (one in each AZ) and an EC2 Instance Connect Endpoint (EICE) to allow me to ssh to them securely without the need for a bastion host or having to place instances in the public subnet.
+In addition it also creates 2 instances in the "app" private subnets (one in each AZ) and an EC2 Instance Connect Endpoint (EICE) to allow ssh-ing to them securely without the need for a bastion host or having to place instances in the public subnet.
 
 My terraform config also create 2 security groups with the AWS recommended ingress and egress ssh rules for the EICE and the E2C instances:
 ![eic-project-sgr-list-readme](https://github.com/user-attachments/assets/9b4c69e8-b0ea-4bdc-9ca3-9f3e0d050255)
