@@ -14,13 +14,14 @@ I recently added some Terraform code that sets up a VPC with my "production read
 - 1 Internet Gateway
 - 1 public route table
 - 1 private route table (for the Nat Gateway)
-![eic-project-vpc-readme](https://github.com/user-attachments/assets/6bdfb6ee-e66a-4bf7-959f-c476ee42a797)
+- ![eic-project-vpc-readme](https://github.com/user-attachments/assets/6bdfb6ee-e66a-4bf7-959f-c476ee42a797)
  
 In addition it also creates 2 instances in the "app" private subnets (one in each AZ) and an EC2 Instance Connect Endpoint (EICE) to allow me to ssh to them securely without the need for a bastion host or having to place instances in the public subnet.
 
 My terraform config also create 2 security groups with the AWS recommended ingress and egress ssh rules for the EICE and the E2C instances:
 ![eic-project-sgr-list-readme](https://github.com/user-attachments/assets/9b4c69e8-b0ea-4bdc-9ca3-9f3e0d050255)
-ECIE:
+
+**ECIE:**
 ![eic-project-eic-sgr-ingress-readme](https://github.com/user-attachments/assets/abcefda7-07e0-4dd4-bb6c-8904c8453e2d)
 ![eic-project-eic-sgr-egress-readme](https://github.com/user-attachments/assets/e85b564f-dbb4-4c8d-bef8-8aa26ecb107a)
 
