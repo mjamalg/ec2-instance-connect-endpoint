@@ -2,7 +2,7 @@
 vpc_cidr_block = "10.72.0.0/16"
 vpc_custom_name = "EICE Project VPC"
 vpc_public_rtb_tag = "EICE Project Public Rtb"
-vpc_public_sn_tag = "EICE Project Subnet"
+vpc_public_sn_tag = "EICE Project Public Subnet"
 vpc_private_app_rtb_tag = "EICE Project App Rtb"
 vpc_private_app_sn_tag = "EICE Project Private App Subnet"
 vpc_private_data_rtb_tag = "EICE Project Data/Database Rtb"
