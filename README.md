@@ -12,7 +12,7 @@ The terraform configs in this repo, most of which were created with the communit
 - 1 Internet Gateway
 - 1 public route table
 - 1 private route table (for the Nat Gateway)
-- 
+
 ![eic-project-vpc-readme](https://github.com/user-attachments/assets/6bdfb6ee-e66a-4bf7-959f-c476ee42a797)
 
 They also create an EC2 Instance Connect Endpodint, 2 instances in the "app" private subnet of each AZ, as well as 2 security groups with the AWS recommended ingress and egress ssh rules for both the EICE and the EC2 instances.
